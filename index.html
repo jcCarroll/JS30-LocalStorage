@@ -34,12 +34,14 @@
 
         function addItem(e) {
             e.preventDefault();
-            const text = (this.querySelector('[name+item]')).value; // in () to get to run first
+            const text = (this.querySelector('[name=item]')).value; // in () to get to run first
             const item = {
                 text, // es6 shorthand for text: text
                 done: false
             };
-            console.log(item);
+
+            items.push(item);
+            this.reset();
         }
 
         addItems.addEventListener('submit', addItem);
