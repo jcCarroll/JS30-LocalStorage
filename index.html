@@ -41,7 +41,18 @@
             };
 
             items.push(item);
+            populateList(items, itemsList);
             this.reset();
+        }
+
+        function pupulateList(plates = [], platesList) { // plates is items and is set to an empty array to make sure the code does not break if nothing is passed it and platesList is itemsList
+            platesList.innerHTML = plates.map((plate, i) => {
+                return `
+                    <li>
+                        <label for="">${plate.text}</label>
+                    </li>
+                `;
+            }).join('';)
         }
 
         addItems.addEventListener('submit', addItem);
