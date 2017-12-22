@@ -42,17 +42,19 @@
 
             items.push(item);
             populateList(items, itemsList);
+            localStorage.setItem('items', JSON.stringify(items));
             this.reset();
         }
 
-        function pupulateList(plates = [], platesList) { // plates is items and is set to an empty array to make sure the code does not break if nothing is passed it and platesList is itemsList
+        function populateList(plates = [], platesList) { // plates is items and is set to an empty array to make sure the code does not break if nothing is passed it and platesList is itemsList
             platesList.innerHTML = plates.map((plate, i) => {
                 return `
                     <li>
-                        <label for="">${plate.text}</label>
+                    <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+                    <label for="item${i}">${plate.text}</label>
                     </li>
                 `;
-            }).join('';)
+            }).join('');
         }
 
         addItems.addEventListener('submit', addItem);
